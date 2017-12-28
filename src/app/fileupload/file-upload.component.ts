@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import {FileService} from './file-upload.service';
+import { Http } from '@angular/http';
 import "rxjs/add/operator/do";
 //import the map function to be used with the http library
 import "rxjs/add/operator/map";
-import {FileService} from './file-upload.service';
-import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'file-upload',
   templateUrl: './file-upload.component.html',
@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class FileUploadComponent {
-  constructor(private http:HttpClient){
+  constructor(private fileservice : FileService,private http:Http){
   }
   private URL :any ="http://localhost:4040/api/upload";
   private uploadstatus = false;
@@ -45,14 +45,14 @@ export class FileUploadComponent {
     downloadfilename = "5da249a4f4e774500579bdbb8b18f3fc"
     downloadfile(){
       
-      this.http.get('http://localhost:3000/api/upload/'+this.downloadfilename);
-      console.log("hit url");
+      //this.http.get('http://localhost:3000/api/upload/'+this.downloadfilename);
+     // console.log("hit url");
      
         //           return res;
         //       })
-      // this.fileservice.downloadfile(downloadfilename).subscribe((res)=>{
-      //    console.log(res);
-      // })
+      this.fileservice.downloadfile(this.downloadfilename).subscribe((res)=>{
+         console.log(res);
+      })
 
     }
     

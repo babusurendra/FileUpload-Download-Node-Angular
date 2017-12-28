@@ -37,8 +37,9 @@ module.exports = {
   }),
   download : ((req,res)=>{
         console.log("in dowload controller");
-        var filePath = "./uploads/"; // Or format the path using the `id` rest param
-        var fileName = "5da249a4f4e774500579bdbb8b18f3fc"; // file name 
-        res.download(filePath, fileName);  
+        path = __dirname('./uploads')
+        // var filePath = "./uploads/"; // Or format the path using the `id` rest param
+         var fileName = "5da249a4f4e774500579bdbb8b18f3fc"; // file name 
+         res.download(path, fileName);  
   })
 };

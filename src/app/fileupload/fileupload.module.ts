@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule }  from '@angular/http';
+import {Http} from '@angular/http';
 import { 
   MatCardModule,
   MatListModule,
@@ -14,14 +15,14 @@ import {
 import { routes } from './fileupload.routes';
 import { HttpClient } from '@angular/common/http';
 import {FileUploadComponent} from './file-upload.component';
-
+import{FileService} from './file-upload.service';
 @NgModule({
   declarations: [
     /**
      * Components / Directives/ Pipes
      */
     FileSelectDirective,
-    FileUploadComponent
+    FileUploadComponent,
   ],
   imports: [
     // modules
@@ -36,11 +37,11 @@ import {FileUploadComponent} from './file-upload.component';
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
-    HttpClient
     // ApolloModule.forRoot(client)
    
     
   ],
+providers:[FileService]
 })
 export class FileUploadModule {
   public static routes = routes;
