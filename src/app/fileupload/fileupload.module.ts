@@ -16,6 +16,7 @@ import { routes } from './fileupload.routes';
 import { HttpClient } from '@angular/common/http';
 import {FileUploadComponent} from './file-upload.component';
 import{FileService} from './file-upload.service';
+//import {FileSaver} from "file-saver";
 @NgModule({
   declarations: [
     /**
@@ -37,6 +38,7 @@ import{FileService} from './file-upload.service';
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
+   
     // ApolloModule.forRoot(client)
    
     

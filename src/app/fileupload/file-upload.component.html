@@ -1,15 +1,15 @@
 <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-<br>
+<br><br>
 <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
 <!-- button to trigger the file upload when submitted -->
 <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll();statusfun()" [disabled]="!uploader.getNotUploadedItems().length">
     Upload with ng-2 file uploader
 </button>
-<br>
+<br><br><br>
 <button value="Dowload" (click)="downloadfile()">Download</button>
-<div *ngIf="uploadstatus">
+<button value="Dowload" (click)="downloadzip()">DownloadMultiple</button>
+<div *ngIf="uploadstatus || downloadStatus">
     <ng-container *ngTemplateOutlet="loading">
-
     </ng-container>
 </div>
 <ng-template #loading>
