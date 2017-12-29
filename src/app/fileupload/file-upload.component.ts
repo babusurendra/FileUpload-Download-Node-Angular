@@ -18,6 +18,7 @@ import { setTimeout } from 'timers';
   styleUrls: ["./file-upload.component.scss"]
 })
 export class FileUploadComponent {
+  selected:string;
   downloadStatus :boolean = false;
   constructor(private fileservice: FileService, private http: Http) {}
   private URL: any = "http://localhost:4040/api/upload";
@@ -34,7 +35,11 @@ export class FileUploadComponent {
   statusfun() {
     this.uploadstatus = true;
   }
+  selectedfile(){
+    console.log(`selected is ${this.selected}`)
+  }
   ngOnInit() {
+    
     //this.uploadstatus = true;
     //override the onAfterAddingfile property of the uploader so it doesn't authenticate with //credentials.
     this.uploader.onAfterAddingFile = file => {
@@ -55,7 +60,7 @@ export class FileUploadComponent {
   }
   downloadfile() {
     this.downloadStatus = true;
-    this.fileservice.downloadfile().subscribe(fileData => {
+    this.fileservice.downloadfile(this.selected).subscribe(fileData => {
       setTimeout(()=>{
         FileSaver.saveAs(fileData, "report.txt");
         this.downloadStatus = false

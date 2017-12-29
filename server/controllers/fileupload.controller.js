@@ -38,15 +38,16 @@ module.exports = {
     });
   },
   download: (req, res) => {
+    let name = req.params.name;
     /**** code to download single file ************/ ///
-    path = __dirname + "/download.txt";
+    path = __dirname + `/${name}.txt`;
     res.download(path);
   },
 
   downloadzip: (req, res) => {
     res.zip([
-      { path: __dirname + "/download.txt", name: "file1" },
-      { path: __dirname + "/download1.txt", name: "file2" }
+      { path: __dirname + "/download1.txt", name: "file1" },
+      { path: __dirname + "/download2.txt", name: "file2" }
     ]);
   }
 };

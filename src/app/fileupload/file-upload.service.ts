@@ -16,7 +16,7 @@ import { ResponseType } from '@angular/http/src/enums';
 @Injectable()
 export class FileService {
     constructor(private http : Http){}
-  downloadfile():Observable<Blob>{
+  downloadfile(selected):Observable<Blob>{
       //console.log("in sevice");
       //return this.http.get(`http://localhost:4040/api/upload/`);
       const type = 'application/vnd.ms-excel';
@@ -25,7 +25,7 @@ export class FileService {
             headers: new Headers({ 'Accept': type })
         });
         
-        return this.http.get('http://localhost:4040/api/upload/', options)
+        return this.http.get(`http://localhost:4040/api/upload/${selected}`, options)
                 .map((response: Response) => <Blob>response.blob())
     }
 

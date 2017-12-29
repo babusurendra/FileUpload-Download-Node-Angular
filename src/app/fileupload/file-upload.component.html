@@ -1,4 +1,5 @@
-<input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+<input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
 <br><br>
 <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
 <!-- button to trigger the file upload when submitted -->
@@ -6,6 +7,10 @@
     Upload with ng-2 file uploader
 </button>
 <br><br><br>
+<select [(ngModel)]="selected" (change)='selectedfile()'>
+    <option value="Download1" >Download1</option>
+    <option value="Download2" >Download2</option>
+</select>
 <button value="Dowload" (click)="downloadfile()">Download</button>
 <button value="Dowload" (click)="downloadzip()">DownloadMultiple</button>
 <div *ngIf="uploadstatus || downloadStatus">
